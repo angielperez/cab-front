@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import excusesServices from "../services/excuses-services";
+import usersServices from "../services/users-services";
 import { useNavigate } from "react-router-dom";
 
-const Excuses = () => {
+const Users = () => {
     const navigate = useNavigate();
     const [list, setList] = useState([]);
     const findList = async () => {
-        let response = await excusesServices.all()
+        let response = await usersServices.all()
         if(response.success){
             setList(response.data)
         }else{
@@ -21,10 +21,10 @@ const Excuses = () => {
         <div>
             <div className="row">
                 <div className="col-sm-6">
-                    <h3>Excusas</h3>
+                    <h3>Usuarios</h3>
                 </div>
                 <div className="col-sm-6 text-right">
-                    <button className="btn btn-primary" onClick={() => { navigate("/create-excuse") }}>+ Nuevo</button>
+                    <button className="btn btn-primary" onClick={() => { navigate("/create-user") }}>+ Nuevo</button>
                 </div>
             </div>
             <div class="table-responsive p-0">
@@ -33,9 +33,7 @@ const Excuses = () => {
                     <tr>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Id</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Persona</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Horario</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha de aplicación</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Observaciones</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Usuario</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha creación</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Estado</th>
                       <th class="text-secondary opacity-7"></th>
@@ -46,13 +44,11 @@ const Excuses = () => {
                         <tr>
                             <td><p class="text-xs text-center font-weight-bold mb-0">{ item.id }</p></td>
                             <td><p class="text-xs text-center font-weight-bold mb-0">{ item.Persona.nombres + " " + item.Persona.apellidos + " (" + item.Persona.identificacion + ")" }</p></td>
-                            <td><p class="text-xs text-center font-weight-bold mb-0">{ item.Horario.dia_semana + " de " + item.Horario.hora_inicio + " a " + item.Horario.hora_fin }</p></td>
-                            <td><p class="text-xs text-center font-weight-bold mb-0">{ item.fecha }</p></td>
-                            <td><p class="text-xs text-center font-weight-bold mb-0">{ item.observaciones }</p></td>
+                            <td><p class="text-xs text-center font-weight-bold mb-0">{ item.usuario }</p></td>
                             <td><p class="text-xs text-center font-weight-bold mb-0">{ item.creacion }</p></td>
                             <td><p class="text-xs text-center font-weight-bold mb-0">{ item.estado == 1 ? 'Activo' : 'Inactivo' }</p></td>
                             <td class="align-middle">
-                                <span onClick={() => { navigate("/update-excuse/"+item.id) }} class="pointer badge badge-sm bg-gradient-primary">Editar</span>
+                                <span onClick={() => { navigate("/update-user/"+item.id) }} class="pointer badge badge-sm bg-gradient-primary">Editar</span>
                             </td>
                         </tr>
                     )}
@@ -62,4 +58,4 @@ const Excuses = () => {
         </div>
     );
 };
-export default Excuses;
+export default Users;

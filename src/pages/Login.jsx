@@ -1,26 +1,30 @@
 import { useState } from "react";
-import { useAuth } from "../AuthProvider";
+import authServices from "../services/auth-services";
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
     const [input, setInput] = useState({
         username: "",
         password: "",
     });
-    const auth = useAuth();
-    const handleSubmitEvent = (e) => {
+    const navigate = useNavigate();
+    const handleSubmitEvent = async (e) => {
         e.preventDefault();
-        if (input.username !== "" && input.password !== "") {
-            try {
-                auth.actions.loginAction(input);
-            } catch (error) {
-                alert(error.message)
-            }
-            return;
+        let request = {
+            username: input.username,
+            password: input.password
         }
-        alert("El usuario y la contraseña es obligatorio");
+        
+        let response = await authServices.login(request)
+        if(response.success){
+            localStorage.setItem("token", response.data.token)
+            navigate("/dashboard");
+        }else{
+            alert(response.message);
+        }
     };
     const handleInput = (e) => {
         const { name, value } = e.target;
-        console.log(name, value)
         setInput((prev) => ({
             ...prev,
             [name]: value,
@@ -72,7 +76,7 @@ const Login = () => {
                                     <div
                                         class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden">
                                         <span class="mask bg-gradient-primary opacity-6"></span>
-                                        <h4 class="mt-5 text-white font-weight-bolder position-relative">"Sistema de Control de Acceso Biometrico"</h4>
+                                        <h4 class="mt-5 text-white font-weight-bolder position-relative">"Sistema de Control de Acceso"</h4>
                                         <p class="text-white position-relative">Identificación Precisa y Segura del Personal de tu Institucion</p>
                                     </div>
                                 </div>

@@ -1,0 +1,66 @@
+//Punto 1
+function redundante(valor) {
+    return function() {
+        return valor;
+    };
+}
+
+const f = redundante("algo");
+console.log(f());
+
+
+//Punto 2
+function mayorTiempo(horas, minutos, segundos) {
+    const segHoras = horas * 3600
+    const segMin = minutos * 60
+
+    if(segHoras >= segMin && segHoras >= segundos){
+        return horas
+    }
+    if(segMin >= segHoras && segMin >= segundos){
+        return minutos
+    }
+    return segundos
+}
+
+//Punto 3
+function estadoSalaChat(lista) {
+    const tamano = lista.length;
+    if (tamano == 0) {
+        return "nadie en linea";
+    }
+    if (tamano == 1) {
+        return lista[0] + " esta en linea";
+    }
+    if (tamano == 2) {
+        return lista[0] + " y " + lista[1] + " estan en linea";
+    }
+    return lista[0] + ", " + lista[1] + " y " + (tamano - 2) + " mas estan en linea";
+}
+
+
+//Punto 4
+function convertir(valor, opcion) {
+    if (opcion == 1) {
+        const celsius = parseInt(valor);
+        const fahrenheit = Math.round((celsius * 9 / 5) + 32);
+        return ${fahrenheit}°F;
+    }
+
+    const fahrenheit = parseInt(valor);
+    const celsius = Math.round((fahrenheit - 32) * 5 / 9);
+    return ${celsius}°C;
+}
+
+let opcion = prompt(`Escoja una opcion de conversion:
+1. Celsius a Fahrenheit
+2. Fahrenheit a Celsius`);
+
+
+if(opcion != 1 && opcion != 2){
+    alert("Error")
+}else{
+    let textOpcion = opcion == 1 ? "Celsius" : "Fahrenheit"
+    let valor = prompt(`Digite el valor ${textOpcion} a convertir: `);
+    alert(convertir(valor, opcion))
+}

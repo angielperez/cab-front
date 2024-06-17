@@ -18,6 +18,7 @@ const PrivateRoute = () => {
         <link href="/plantilla/assets/css/nucleo-svg.css" rel="stylesheet" />
         <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
         <link href="/plantilla/assets/css/nucleo-svg.css" rel="stylesheet" />
+        <link href="/general.css" rel="stylesheet" />
         <link id="pagestyle" href="/plantilla/assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" />
 
         <div class="g-sidenav-show   bg-gray-100">
@@ -42,17 +43,25 @@ const PrivateRoute = () => {
                             </a>
                         </li>
                         <li class="nav-item" >
-                            <a class={`nav-link ${location.pathname == "/teachers" && 'active' }`} onClick={() => { redirectTo('/teachers') } } >
+                            <a class={`nav-link ${location.pathname == "/peoples" && 'active' }`} onClick={() => { redirectTo('/peoples') } } >
                                 <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                                    <i class="ni ni-tv-2 text-warning text-sm opacity-10"></i>
                                 </div>
-                                <span class="nav-link-text ms-1">Docentes</span>
+                                <span class="nav-link-text ms-1">Personas</span>
+                            </a>
+                        </li>
+                        <li class="nav-item" >
+                            <a class={`nav-link ${location.pathname == "/users" && 'active' }`} onClick={() => { redirectTo('/users') } } >
+                                <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                    <i class="ni ni-tv-2 text-warning text-sm opacity-10"></i>
+                                </div>
+                                <span class="nav-link-text ms-1">Usuarios</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class={`nav-link ${location.pathname == "/horaries" && 'active' }`} onClick={() => { redirectTo('/horaries') } }>
                                 <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                                    <i class="ni ni-tv-2 text-success text-sm opacity-10"></i>
                                 </div>
                                 <span class="nav-link-text ms-1">Horarios</span>
                             </a>
@@ -60,15 +69,15 @@ const PrivateRoute = () => {
                         <li class="nav-item">
                             <a class={`nav-link ${location.pathname == "/access" && 'active' }`} onClick={() => { redirectTo('/access') } }>
                                 <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-app text-info text-sm opacity-10"></i>
+                                    <i class="ni ni-tv-2 text-info text-sm opacity-10"></i>
                                 </div>
-                                <span class="nav-link-text ms-1">Accesos</span>
+                                <span class="nav-link-text ms-1">Entradas y salidas</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class={`nav-link ${location.pathname == "/excuses" && 'active' }`} onClick={() => { redirectTo('/excuses') } }>
                                 <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                    <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+                                    <i class="ni ni-tv-2 text-danger text-sm opacity-10"></i>
                                 </div>
                                 <span class="nav-link-text ms-1">Excusas</span>
                             </a>
