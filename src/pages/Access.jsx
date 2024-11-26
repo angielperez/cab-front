@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import excusesServices from "../services/excuses-services";
 import { useNavigate } from "react-router-dom";
 import accessServices from "../services/access-services";
+import { parseDate } from "../utils";
 
 const Access = () => {
     const navigate = useNavigate();
@@ -60,7 +61,7 @@ const Access = () => {
                         <tr>
                             <td><p class="text-xs text-center font-weight-bold mb-0">{ item.Persona.nombres + " " + item.Persona.apellidos + " (" + item.Persona.identificacion + ")" }</p></td>
                             <td><p class="text-xs text-center font-weight-bold mb-0">{ item.tipo }</p></td>
-                            <td><p class="text-xs text-center font-weight-bold mb-0">{ item.creacion }</p></td>
+                            <td><p class="text-xs text-center font-weight-bold mb-0">{ parseDate(new Date(item.creacion)) }</p></td>
                         </tr>
                     )}
                   </tbody>

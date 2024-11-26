@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import peoplesServices from "../services/peoples-services";
 import { useNavigate } from "react-router-dom";
+import { parseDate } from "../utils";
 
 const Peoples = () => {
     const navigate = useNavigate();
@@ -55,7 +56,7 @@ const Peoples = () => {
                             <td><p class="text-xs text-center font-weight-bold mb-0">{ item.telefono }</p></td>
                             <td><p class="text-xs text-center font-weight-bold mb-0">{ item.correo }</p></td>
                             <td><p class="text-xs text-center font-weight-bold mb-0">{ item.direccion }</p></td>
-                            <td><p class="text-xs text-center font-weight-bold mb-0">{ item.creacion }</p></td>
+                            <td><p class="text-xs text-center font-weight-bold mb-0">{ parseDate(new Date(item.creacion)) }</p></td>
                             <td><p class="text-xs text-center font-weight-bold mb-0">{ item.estado == 1 ? 'Activo' : 'Inactivo' }</p></td>
                             <td class="align-middle">
                                 <span onClick={() => { navigate("/update-people/"+item.id) }} class="pointer badge badge-sm bg-gradient-primary">Editar</span>
